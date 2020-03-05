@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Item from '../item/Item'
+import Form from '../form/Form';
 
 export default class List extends Component {
 
@@ -8,6 +9,7 @@ export default class List extends Component {
     render() {
         return (
             <div>
+                <Form></Form>
                 <ul>
                     <Item data={this.state.data}></Item>
                 </ul>
