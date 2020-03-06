@@ -11,17 +11,55 @@ export default class List extends Component {
         items: []
     }
 
-    addItem = item => {
-        this.setState({
+    addItem = text => {
+        /*this.setState({
             items: [...this.state.items, item]
-        });
+        });*/
+        const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            item: text
+            //secondParam: 'yourOtherValue',
+          })
+          };
+          fetch("http://192.168.2.41:5000/items/post", requestOptions).then((response) => {
+            return response.json();
+          }).then((result) => {
+            // do what you want with the response here
+            console.log(result)
+          });
+        this.getData();
     };
 
-    handleDeleteItem = (text) => {
-        this.setState({
+    handleDeleteItem = text => {
+        /*this.setState({
             items: this.state.items.filter(item => item !== text)
-        })
+        })*/
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              item: text
+              //secondParam: 'yourOtherValue',
+            })
+          };
+        
+          fetch("http://192.168.2.41:5000/items/delete", requestOptions).then((response) => {
+            return response.json();
+          }).then((result) => {
+            // do what you want with the response here
+            console.log(result)
+          });
+        this.getData();
     }
+
 
     getData = () => {
         fetch("http://192.168.2.41:5000/items")
@@ -40,7 +78,7 @@ export default class List extends Component {
     }
 
     componentDidMount() {
-        
+        this.getData();
     }
 
     render() {

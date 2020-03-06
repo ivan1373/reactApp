@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Delete from '@material-ui/icons/Delete';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
