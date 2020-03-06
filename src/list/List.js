@@ -30,7 +30,6 @@ export default class List extends Component {
             return response.json();
           }).then((result) => {
             // do what you want with the response here
-            console.log(result)
             this.getData();
           });
         
@@ -56,7 +55,7 @@ export default class List extends Component {
             return response.json();
           }).then((result) => {
             // do what you want with the response here
-            console.log(result)
+           
             this.getData();
           });
         
@@ -68,7 +67,7 @@ export default class List extends Component {
           .then(res => res.json())
           .then(
             (result) => {
-                console.log(result)
+               
               this.setState({
                 items: result.ITEMS
               });
