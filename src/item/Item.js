@@ -1,16 +1,29 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import Delete from '@material-ui/icons/Delete';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import FolderIcon from '@material-ui/icons/Folder';
 
-export default class Item extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+const listStyle = {
+    width: '100%',
+    maxWidth: 400,
+    wordWrap: 'break-word'
+  }
 
-    render() {
-        return (
-            <div>
-                <li>{this.props.data}</li>
-            </div>
-        )
-    }
-}
+export default props => (
+    <div style={listStyle}> 
+        <ListItem>
+            <ListItemIcon>
+                <Avatar>
+                    <FolderIcon />
+                </Avatar>
+            </ListItemIcon>
+            <ListItemText primary={props.text} />
+            <ListItemIcon>
+                <Delete onClick={props.onDelete}></Delete>
+            </ListItemIcon>
+        </ListItem>
+    </div>
+)
