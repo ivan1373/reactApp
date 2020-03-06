@@ -31,8 +31,9 @@ export default class List extends Component {
           }).then((result) => {
             // do what you want with the response here
             console.log(result)
+            this.getData();
           });
-        this.getData();
+        
     };
 
     handleDeleteItem = text => {
@@ -56,8 +57,9 @@ export default class List extends Component {
           }).then((result) => {
             // do what you want with the response here
             console.log(result)
+            this.getData();
           });
-        this.getData();
+        
     }
 
 
