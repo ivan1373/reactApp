@@ -5,6 +5,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
+import EditIcon from '@material-ui/icons/Edit';
+import {Link} from "react-router-dom";
 
 const listStyle = {
     width: '100%',
@@ -21,6 +23,9 @@ export default props => (
                 </Avatar>
             </ListItemIcon>
             <ListItemText primary={props.text} />
+            <ListItemIcon>
+                <Link to={`/${props.text}`}><EditIcon></EditIcon></Link>
+            </ListItemIcon>
             <ListItemIcon>
                 <Delete onClick={props.onDelete}></Delete>
             </ListItemIcon>

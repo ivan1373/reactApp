@@ -12,62 +12,49 @@ export default class List extends Component {
     }
 
     addItem = text => {
-        /*this.setState({
-            items: [...this.state.items, item]
-        });*/
         const requestOptions = {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            item: text
-            //secondParam: 'yourOtherValue',
-          })
-          };
-          fetch("http://192.168.2.41:5000/items/post", requestOptions).then((response) => {
-            return response.json();
-          }).then((result) => {
-            // do what you want with the response here
-            this.getData();
-          });
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                item: text
+            })
+        };
         
+        fetch("http://192.168.2.36:5000/items/post", requestOptions).then((response) => {
+            return response.json();
+        }).then((result) => {
+            this.getData();
+        });
     };
 
-    handleDeleteItem = text => {
-        /*this.setState({
-            items: this.state.items.filter(item => item !== text)
-        })*/
+    handleDeleteItem = (text) => {
         const requestOptions = {
             method: 'DELETE',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              item: text
-              //secondParam: 'yourOtherValue',
+                item: text
             })
-          };
-        
-          fetch("http://192.168.2.41:5000/items/delete", requestOptions).then((response) => {
+        };
+
+        fetch("http://192.168.2.36:5000/items/delete", requestOptions).then((response) => {
             return response.json();
-          }).then((result) => {
-            // do what you want with the response here
-           
+        }).then((result) => {
             this.getData();
-          });
-        
+        });
     }
 
 
     getData = () => {
-        fetch("http://192.168.2.41:5000/items")
+        fetch("http://192.168.2.36:5000/items")
           .then(res => res.json())
           .then(
             (result) => {
-               
               this.setState({
                 items: result.ITEMS
               });
